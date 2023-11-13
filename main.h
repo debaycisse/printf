@@ -11,9 +11,11 @@ typedef struct func
 {
 	char format;
 	void (*f)(char ch);
+	void *type;
 } func_t;
 
 int _printf(const char *format, ...);
+void write_char(char ch);
 
 
 #endif

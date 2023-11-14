@@ -5,38 +5,36 @@
 #include "main.h"
 
 /**
+ * _printf - prints data to the screen
+ * @format: the data type flag
+ *
+ * Description: prints data to the standard output using its given format
  */
 int _printf(const char *format, ...)
 {
-	int i;
-	int j;
-	va_list all_data;
-	char nw = '\n';
-	func_t funcs[] = {
-		{'c', write_char}
-	};
+	char nl = '\n';
+	va_list v_parameters;
 
-	if (format == NULL)
-		return (1);
-
-	i = 0;
-	va_start(all_data, format);
-	while (format[i] != '\0')
+	va_start(v_parameters, format);
+	while (*format != '\0')
 	{
-		j = 0;
-		while (j < 1)
+		if (*format == '%')
 		{
-			if (format[i] == funcs[i].format)
+			switch (*format)
 			{
-				if (j == 0)
-					funcs[i].f(va_arg(all_data, int));
-				if (j == 1)
-					funcs[i].f(va_arg(all_data, int));
+				case 'c':
+					write_char(va_arg(v_parameters, int));
+					break;
+				case 's':
+					write_string(va_arg(v_parameters, char *));
+					break;
+				default:
+					break;
 			}
-			j++;
 		}
-		i++;
+		write(1, &format, 1);
+		format++;
 	}
-	write(1, &nw, sizeof(char));
-	va_end(all_data);
+	va_end(v_parameters);
+	write(1, &nl, 1);
 }

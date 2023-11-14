@@ -5,7 +5,7 @@
  * write_char - prints character to the console or screen
  * @ch: the character to be printed
  */
-void write_char(char ch)
+int write_char(char ch)
 {
-	_putchar(ch);
+	return (write(1, &ch, 1));
 }

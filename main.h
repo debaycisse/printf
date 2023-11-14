@@ -21,7 +21,7 @@ typedef struct func
 
 
 int _printf(const char *format, ...);
-void write_char(char ch);
+int write_char(char ch);
 void write_string(char *str);
 int _putchar(char ch);
 

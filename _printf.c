@@ -12,6 +12,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int count = 0;
 	char nl = '\n';
 	va_list v_parameters;
 
@@ -37,4 +38,5 @@ int _printf(const char *format, ...)
 	}
 	va_end(v_parameters);
 	write(1, &nl, 1);
+	return (count);
 }

@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		next_f = format + 1; 
-		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's')))
+		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's') || (*next_f == '%')))
 		{
 			format++;
 			switch (*format)
@@ -31,6 +31,10 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					write_string(va_arg(v_parameters, char *));
+					count++;
+					break;
+				case '%':
+					write_p('%');
 					count++;
 					break;
 				default:

@@ -12,6 +12,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int count = 0;
 	char nl = '\n';
 	va_list v_parameters;
 	const char *next_f;
@@ -27,18 +28,24 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					write_char(va_arg(v_parameters, int));
+					count++;
 					break;
 				case 's':
 					write_string(va_arg(v_parameters, char *));
+					count++;
 					break;
 				default:
 					break;
 			}
 		}
 		else
+		{
 			write_char(*format);
+			count++;
+		}
 		format++;
 	}
 	va_end(v_parameters);
 	_putchar('\n');
+	return (count);
 }

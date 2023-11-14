@@ -13,7 +13,6 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	char nl = '\n';
 	va_list v_parameters;
 	const char *next_f;
 
@@ -21,7 +20,7 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		next_f = format + 1; 
-		if ((*format == '%') && (*next_f == 'c') || (*next_f == 's'))
+		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's')))
 		{
 			format++;
 			switch (*format)
@@ -46,6 +45,6 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(v_parameters);
-	_putchar('\n');
+	write_char('\n');
 	return (count);
 }

@@ -8,7 +8,7 @@
  * _printf - prints data to the screen
  * @format: the data type flag
  *
- * Description: prints data to the standard output using its given format
+ * Return: the number succesful operations
  */
 int _printf(const char *format, ...)
 {
@@ -19,8 +19,9 @@ int _printf(const char *format, ...)
 	va_start(v_parameters, format);
 	while (*format != '\0')
 	{
-		next_f = format + 1; 
-		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's') || (*next_f == '%')))
+		next_f = format + 1;
+		if ((*format == '%') && \
+				((*next_f == 'c') || (*next_f == 's') || (*next_f == '%')))
 		{
 			format++;
 			switch (*format)

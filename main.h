@@ -23,6 +23,7 @@ typedef struct func
 int _printf(const char *format, ...);
 int write_char(char ch);
 void write_string(char *str);
+int write_p(char ch);
 int _putchar(char ch);
 
 #endif

@@ -1,3 +1,4 @@
+#include <stdarg.h>
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -25,5 +26,7 @@ int write_char(char ch);
 void write_string(char *str);
 int write_p(char ch);
 int _putchar(char ch);
+void percent_symbol(char ch, int *count, va_list v_parameters);
+void backslash_symbol(char ch, int *count);
 
 #endif

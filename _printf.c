@@ -24,25 +24,17 @@ int _printf(const char *format, ...)
 				((*next_f == 'c') || (*next_f == 's') || (*next_f == '%')))
 		{
 			format++;
-			switch (*format)
-			{
-				case 'c':
-					write_char(va_arg(v_parameters, int));
-					count++;
-					break;
-				case 's':
-					write_string(va_arg(v_parameters, char *));
-					count++;
-					break;
-				case '%':
-					write_p('%');
-					count++;
-					break;
-				default:
-					break;
-			}
+			percent_symbol(*format, &count, v_parameters);
 		}
-		else
+		if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
+				(*next_f == '\\') || (*next_f == 'r') || (*next_f == 'v') || \
+				(*next_f == 'f') || (*next_f == 'b') || (*next_f == 'a') || \
+				(*next_f == '%')))
+		{
+			format++;
+			backslash_symbol(*format, &count);
+		}
+		if ((*format != '%') && (*format != '\\'))
 		{
 			write_char(*format);
 			count++;
@@ -50,6 +42,5 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	va_end(v_parameters);
-	write_char('\n');
 	return (count);
 }

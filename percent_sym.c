@@ -24,6 +24,9 @@ void percent_symbol(char ch, int *count, va_list v_parameters)
 			(*count)++;
 			break;
 		default:
+			_putchar('%');
+			_putchar(ch);
+			*count += 2;
 			break;
 	}
 }

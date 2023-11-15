@@ -25,21 +25,23 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			percent_symbol(*format, &count, v_parameters);
+			format++;
 		}
-		if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
+		else if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
 				(*next_f == '\\') || (*next_f == 'r') || (*next_f == 'v') || \
 				(*next_f == 'f') || (*next_f == 'b') || (*next_f == 'a') || \
 				(*next_f == '%')))
 		{
 			format++;
 			backslash_symbol(*format, &count);
+			format++;
 		}
-		if ((*format != '%') && (*format != '\\'))
+		else if ((*format != '%') && (*format != '\\'))
 		{
 			write_char(*format);
 			count++;
+			format++;
 		}
-		format++;
 	}
 	va_end(v_parameters);
 	return (count);

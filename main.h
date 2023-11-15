@@ -1,7 +1,7 @@
-#include <stdarg.h>
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdarg.h>
 /**
  * struct func - structure to match character with function
  *

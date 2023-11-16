@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdarg.h>
 #include "main.h"
 
@@ -23,9 +24,17 @@ void percent_symbol(char ch, int *count, va_list v_parameters)
 			write_p('%');
 			(*count)++;
 			break;
+		case 'i':
+			write_int(va_arg(v_parameters, int));
+			(*count)++;
+			break;
+		case 'd':
+			write_int(va_arg(v_parameters, int));
+			(*count)++;
+			break;
 		default:
-			_putchar('%');
-			_putchar(ch);
+			printf("%");
+			putchar(ch);
 			*count += 2;
 			break;
 	}

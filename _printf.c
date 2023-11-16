@@ -21,20 +21,18 @@ int _printf(const char *format, ...)
 	{
 		next_f = format + 1;
 		if ((*format == '%') && \
-				((*next_f == 'c') || (*next_f == 's') || (*next_f == '%')))
+				((*next_f == 'c') || (*next_f == 's') || (*next_f == '%') || (*next_f == 'i') || (*next_f == 'd')))
 		{
-			format++;
-			percent_symbol(*format, &count, v_parameters);
-			format++;
+			format += 2;
+			percent_symbol(*(format -1), &count, v_parameters);
 		}
 		else if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
 				(*next_f == '\\') || (*next_f == 'r') || (*next_f == 'v') || \
 				(*next_f == 'f') || (*next_f == 'b') || (*next_f == 'a') || \
 				(*next_f == '%')))
 		{
-			format++;
-			backslash_symbol(*format, &count);
-			format++;
+			format += 2;
+			backslash_symbol(*(format - 1), &count);
 		}
 		else if ((*format != '%') && (*format != '\\'))
 		{

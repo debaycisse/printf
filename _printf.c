@@ -20,11 +20,17 @@ int _printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		next_f = format + 1;
-		if ((*format == '%') && \
-				((*next_f == 'c') || (*next_f == 's') || (*next_f == '%') || (*next_f == 'i') || (*next_f == 'd')))
+		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's') || \
+			(*next_f == '%') || (*next_f == 'i') || (*next_f == 'd')))
 		{
 			format += 2;
-			percent_symbol(*(format -1), &count, v_parameters);
+			percent_symbol(*(format - 1), &count, v_parameters);
+		}
+		if ((*format == '%') &&	((*next_f != 'c') || (*next_f != 's') || \
+			(*next_f != '%') || (*next_f != 'i') || (*next_f != 'd')))
+		{
+			format += 2;
+			percent_symbol(*(format - 1), &count, v_parameters);
 		}
 		else if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
 				(*next_f == '\\') || (*next_f == 'r') || (*next_f == 'v') || \

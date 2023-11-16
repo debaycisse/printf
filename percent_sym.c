@@ -10,30 +10,29 @@
  */
 void percent_symbol(char ch, int *count, va_list v_parameters)
 {
-	if (ch == 'c')
+	switch (ch)
 	{
-		write_char(va_arg(v_parameters, int));
-		(*count)++;
-	}
-	if (ch == 's')
-	{
-		write_string(va_arg(v_parameters, char *));
-		(*count)++;
-	}
-	if (ch == '%')
-	{
-		write_p('%');
-		(*count)++;
-	}
-	if ((ch == 'i') || (ch == 'd'))
-	{
-		write_int(va_arg(v_parameters, int));
-		(*count)++;
-	}
-	else
-	{
-		putchar('%');
-		putchar(ch);
-		*count += 2;
+		case 'c':
+			write_char(va_arg(v_parameters, int));
+			(*count)++;
+			break;
+		case 's':
+			write_string(va_arg(v_parameters, char *));
+			(*count)++;
+			break;
+		case '%':
+			write_p('%');
+			(*count)++;
+			break;
+		case 'i':
+		case 'd':
+			write_int(va_arg(v_parameters, int));
+			(*count)++;
+			break;
+		default:
+			write_p('%');
+			write_char(ch);
+			(*count) += 2;
+			break;
 	}
 }

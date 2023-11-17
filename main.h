@@ -36,5 +36,6 @@ void write_x(unsigned int num);
 void write_X(unsigned int num);
 char switch_num_small(int num);
 char switch_num_capital(int num);
+void write_ptr(void *ptr);
 
 #endif

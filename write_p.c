@@ -17,16 +17,3 @@ void write_ptr(void *ptr)
 		ptr_char++;
 	}
 }
-
-int main (void)
-{
-	void *ptr;
-	int *temp = malloc(sizeof(int) * 8);
-	
-	ptr = (void *)0x7ffe637541f0;
-	ptr = (void *)temp;
-	write_ptr(ptr);
-
-
-	return (0);
-}

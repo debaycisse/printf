@@ -41,6 +41,14 @@ void percent_symbol(char ch, int *count, va_list v_parameters)
 			write_o(va_arg(v_parameters, unsigned int));
 			(*count)++;
 			break;
+		case 'x':
+			write_x(va_arg(v_parameters, unsigned int));
+			(*count)++;
+			break;
+		case 'X':
+			write_X(va_arg(v_parameters, unsigned int));
+			(*count)++;
+			break;
 		default:
 			write_p('%');
 			write_char(ch);

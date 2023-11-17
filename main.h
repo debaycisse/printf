@@ -32,5 +32,9 @@ void write_int(int num);
 void write_b(unsigned int num);
 void write_u(unsigned int num);
 void write_o(unsigned int num);
+void write_x(unsigned int num);
+void write_X(unsigned int num);
+char switch_num_small(int num);
+char switch_num_capital(int num);
 
 #endif

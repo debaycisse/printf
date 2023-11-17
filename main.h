@@ -29,5 +29,7 @@ int _putchar(char ch);
 void percent_symbol(char ch, int *count, va_list v_parameters);
 void backslash_symbol(char ch, int *count);
 void write_int(int num);
+void write_b(unsigned int num);
+void write_u(unsigned int num);
 
 #endif

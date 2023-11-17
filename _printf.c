@@ -21,13 +21,15 @@ int _printf(const char *format, ...)
 	{
 		next_f = format + 1;
 		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's') || \
-			(*next_f == '%') || (*next_f == 'i') || (*next_f == 'd')))
+			(*next_f == '%') || (*next_f == 'i') || (*next_f == 'd') || \
+			(*next_f == 'b') || (*next_f == 'u')))
 		{
 			format += 2;
 			percent_symbol(*(format - 1), &count, v_parameters);
 		}
 		if ((*format == '%') &&	((*next_f != 'c') || (*next_f != 's') || \
-			(*next_f != '%') || (*next_f != 'i') || (*next_f != 'd')))
+			(*next_f != '%') || (*next_f != 'i') || (*next_f != 'd') || \
+			(*next_f != 'b') || (*next_f != 'u')))
 		{
 			format += 2;
 			percent_symbol(*(format - 1), &count, v_parameters);

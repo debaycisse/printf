@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 
@@ -8,10 +7,10 @@
  */
 void write_b(unsigned int num)
 {
-	long long int round;
+	long int round;
 	unsigned int num_cpy;
-	long long int *num_array;
-	long long int i;
+	long int *num_array;
+	long int i;
 	int j;
 
 	round = 0;
@@ -33,7 +32,7 @@ void write_b(unsigned int num)
 	j = 0;
 	while (i > 0)
 	{
-		printf("%lli", num_array[j]);
+		write_char((num_array[i]) + '0');
 		j++;
 		i--;
 	}

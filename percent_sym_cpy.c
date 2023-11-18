@@ -13,7 +13,9 @@ void percent_symbol(char ch, counter *count_name, va_list v_parameters)
 	func_t all_func[] = {
 		{'c', write_char, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
 		{'s', NULL, write_string, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'%', NULL, NULL, write_p, NULL, NULL, NULL, NULL, NULL, NULL}
+		{'%', NULL, NULL, write_p, NULL, NULL, NULL, NULL, NULL, NULL},
+		{'d', NULL, NULL, NULL, write_int, NULL, NULL, NULL, NULL, NULL},
+		{'i', NULL, NULL, NULL, write_int, NULL, NULL, NULL, NULL, NULL}
 	};
 	int function_size = sizeof(all_func) / sizeof(all_func[0]);
 	int i;
@@ -35,6 +37,11 @@ void percent_symbol(char ch, counter *count_name, va_list v_parameters)
 		else if (ch == all_func[i].format && i == 2)
 		{
 			(*all_func[i].f_percentage)('%', count_name);
+			break;
+		}
+		else if (ch == all_func[i].format && (i == 3 || i == 4))
+		{
+			(*all_func[i].f_int)(va_arg(v_parameters, int), count_name);
 			break;
 		}
 		else if ((i + 1) == function_size)

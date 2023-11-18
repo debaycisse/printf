@@ -51,5 +51,6 @@ void write_p(char ch, counter *count_name);
 int _putchar(char ch);
 void percent_symbol(char ch, counter *count_name, va_list v_parameters);
 void backslash_symbol(char ch, counter *count_name);
+void write_int(int num, counter *count_name);
 
 #endif

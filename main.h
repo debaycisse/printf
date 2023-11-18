@@ -14,29 +14,24 @@
 typedef struct func
 {
 	char format;
-	void (*f_char)(char);
-	void (*f_str)(char *);
-	void (*f_int)(int);
-	void (*f_float)(float);
+	int (*f_char)(char, int *);
+	void (*f_str)(char *, int *);
+	void (*f_percentage)(char, int *);
+	void (*f_int)(int, int *);
+	void (*f_ptr)(void *, int *);
+	void (*f_octa)(int, int *);
+	void (*f_unsigned)(unsigned int, int *);
+	void (*f_hex)(void *, int *);
+	void (*f_HEX)(void *, int *);
 } func_t;
 
 
 int _printf(const char *format, ...);
-int write_char(char ch, int *buffer_id);
-void write_string(char *str, int *buffer_id);
-int write_p(char ch, int *buffer_id);
+int write_char(char ch, int *count);
+void write_string(char *str, int *count);
+void write_p(char ch, int *count);
 int _putchar(char ch);
-void percent_symbol(char ch, int *count, va_list v_parameters, int *buffer_id);
+void percent_symbol(char ch, int *count, va_list v_parameters);
 void backslash_symbol(char ch, int *count);
-void write_int(int num, int *buffer_id);
-void write_b(unsigned int num, int *buffer_id);
-void write_u(unsigned int num, int *buffer_id);
-void write_o(unsigned int num, int *buffer_id);
-void write_x(unsigned int num, int *buffer_id);
-void write_X(unsigned int num, int *buffer_id);
-char switch_num_small(int num);
-char switch_num_capital(int num);
-void write_ptr(void *ptr, int *buffer_id);
-int get_buffer(char data, int *buffer_id);
 
 #endif

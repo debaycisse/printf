@@ -15,7 +15,6 @@ int _printf(const char *format, ...)
 	int count = 0;
 	va_list v_parameters;
 	const char *next_f;
-	int buffer_id = 0;
 
 	va_start(v_parameters, format);
 	while (*format != '\0')
@@ -27,15 +26,15 @@ int _printf(const char *format, ...)
 			(*next_f == 'x') || (*next_f == 'X') || (*next_f == 'p')))
 		{
 			format += 2;
-			percent_symbol(*(format - 1), &count, v_parameters, &buffer_id);
+			percent_symbol(*(format - 1), &count, v_parameters);
 		}
-		if ((*format == '%') &&	((*next_f != 'c') || (*next_f != 's') || \
-			(*next_f != '%') || (*next_f != 'i') || (*next_f != 'd') || \
-			(*next_f != 'b') || (*next_f != 'u') || (*next_f != 'o') || \
-			(*next_f != 'x') || (*next_f != 'X') || (*next_f != 'p')))
+		else if ((*format == '%') && ((*next_f != 'c') || (*next_f != 's')\
+				|| (*next_f != '%') || (*next_f != 'i') || (*next_f != 'd') || \
+				(*next_f != 'b') || (*next_f != 'u') || (*next_f != 'o') || \
+				(*next_f != 'x') || (*next_f != 'X') || (*next_f != 'p')))
 		{
 			format += 2;
-			percent_symbol(*(format - 1), &count, v_parameters, &buffer_id);
+			percent_symbol(*(format - 1), &count, v_parameters);
 		}
 		else if ((*format == '\\') && ((*next_f == 't') || (*next_f == 'n') || \
 				(*next_f == '\\') || (*next_f == 'r') || (*next_f == 'v') || \
@@ -47,11 +46,9 @@ int _printf(const char *format, ...)
 		}
 		else if ((*format != '%') && (*format != '\\'))
 		{
-			write_char(*format, &buffer_id);
-			count++;
+			write_char(*format, &count);
 			format++;
 		}
 	}
-	va_end(v_parameters);
 	return (count);
 }

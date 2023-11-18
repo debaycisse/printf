@@ -4,10 +4,9 @@
 /**
  * write_p - writes percentage symbol
  * @ch: the percentage character to be written
- * Return: write's function return value
+ * @count: the total number of character processed
  */
-int write_p(char ch, int *buffer_id)
+void write_p(char ch, int *count)
 {
-	get_buffer('%', buffer_id);
-	return (get_buffer(ch, buffer_id));
+	write_char(ch, count);
 }

@@ -4,9 +4,11 @@
 /**
  * write_char - prints character to the console or screen
  * @ch: the character to be printed
- * Return: the value of the write function
+ * @count: the total number of processed characters
+ * Return: the value of the @count
  */
-int write_char(char ch, int *buffer_id)
+int write_char(char ch, int *count)
 {
-	return (get_buffer(ch, buffer_id));
+	*count += (int) write(1, &ch, 1);
+	return (*count);
 }

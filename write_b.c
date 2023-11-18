@@ -33,7 +33,7 @@ void write_b(unsigned int num, counter *count_name)
 	j = 0;
 	while (i > 0)
 	{
-		write_char((num_array[i]) + '0', count_name);
+		write_char((num_array[j]) + '0', count_name);
 		j++;
 		i--;
 	}

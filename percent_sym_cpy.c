@@ -10,7 +10,7 @@
  */
 void percent_symbol(char ch, int *count, va_list v_parameters)
 {
-	func_t all_func[] ={
+	func_t all_func[] = {
 		{'c', write_char, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
 		{'s', NULL, write_string, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
 		{'%', NULL, NULL, write_p, NULL, NULL, NULL, NULL, NULL, NULL}
@@ -19,7 +19,7 @@ void percent_symbol(char ch, int *count, va_list v_parameters)
 	int i;
 
 	i = 0;
-	while(i < function_size)
+	while (i < function_size)
 	{
 		if (ch == all_func[i].format && i == 0)
 		{

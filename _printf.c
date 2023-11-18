@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		if ((*format == '%') && ((*next_f == 'c') || (*next_f == 's') || \
 			(*next_f == '%') || (*next_f == 'i') || (*next_f == 'd') || \
 			(*next_f == 'b') || (*next_f == 'u') || (*next_f == 'o') || \
-			(*next_f == 'x') || (*next_f == 'X')))
+			(*next_f == 'x') || (*next_f == 'X') || (*next_f == 'p')))
 		{
 			format += 2;
 			percent_symbol(*(format - 1), &count, v_parameters);
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		if ((*format == '%') &&	((*next_f != 'c') || (*next_f != 's') || \
 			(*next_f != '%') || (*next_f != 'i') || (*next_f != 'd') || \
 			(*next_f != 'b') || (*next_f != 'u') || (*next_f != 'o') || \
-			(*next_f != 'x') || (*next_f != 'X')))
+			(*next_f != 'x') || (*next_f != 'X') || (*next_f != 'p')))
 		{
 			format += 2;
 			percent_symbol(*(format - 1), &count, v_parameters);

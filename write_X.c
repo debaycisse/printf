@@ -7,7 +7,7 @@
  * write_X - handles %X format string
  * @num: the number to be converted to base 8
  */
-void write_X(unsigned int num)
+void write_X(unsigned int num, int *buffer_id)
 {
 	long int round;
 	unsigned int num_cpy;
@@ -36,7 +36,7 @@ void write_X(unsigned int num)
 		j = 0;
 		while (i > 0)
 		{
-			write_char(switch_num_capital(num_array[j]));
+			write_char(switch_num_capital(num_array[j]), buffer_id);
 			j++;
 			i--;
 		}

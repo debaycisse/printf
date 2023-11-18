@@ -6,7 +6,7 @@
  * write_o - handles %o format string
  * @num: the number to be converted to base 8
  */
-void write_o(unsigned int num)
+void write_o(unsigned int num, int *buffer_id)
 {
 	long int round;
 	unsigned int num_cpy;
@@ -35,7 +35,7 @@ void write_o(unsigned int num)
 		j = 0;
 		while (i > 0)
 		{
-			write_char((num_array[j]) + '0');
+			write_char((num_array[j]) + '0', buffer_id);
 			j++;
 			i--;
 		}

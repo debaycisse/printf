@@ -6,7 +6,7 @@
  * write_u - handles u% format string
  * @num: number to handle
  */
-void write_u(unsigned int num)
+void write_u(unsigned int num, int *buffer_id)
 {
 	unsigned int *num_array;
 	unsigned int num_cpy;
@@ -35,7 +35,7 @@ void write_u(unsigned int num)
 			i = 0;
 			while (round > 0)
 			{
-				write_char((num_array[i]) + '0');
+				write_char((num_array[i]) + '0', buffer_id);
 				i++;
 				round--;
 			}
@@ -64,7 +64,7 @@ void write_u(unsigned int num)
 			i = 0;
 			while (round > 0)
 			{
-				write_char((num_array[i]) + '0');
+				write_char((num_array[i]) + '0', buffer_id);
 				i++;
 				round--;
 			}

@@ -22,20 +22,21 @@ typedef struct func
 
 
 int _printf(const char *format, ...);
-int write_char(char ch);
-void write_string(char *str);
-int write_p(char ch);
+int write_char(char ch, int *buffer_id);
+void write_string(char *str, int *buffer_id);
+int write_p(char ch, int *buffer_id);
 int _putchar(char ch);
-void percent_symbol(char ch, int *count, va_list v_parameters);
+void percent_symbol(char ch, int *count, va_list v_parameters, int *buffer_id);
 void backslash_symbol(char ch, int *count);
-void write_int(int num);
-void write_b(unsigned int num);
-void write_u(unsigned int num);
-void write_o(unsigned int num);
-void write_x(unsigned int num);
-void write_X(unsigned int num);
+void write_int(int num, int *buffer_id);
+void write_b(unsigned int num, int *buffer_id);
+void write_u(unsigned int num, int *buffer_id);
+void write_o(unsigned int num, int *buffer_id);
+void write_x(unsigned int num, int *buffer_id);
+void write_X(unsigned int num, int *buffer_id);
 char switch_num_small(int num);
 char switch_num_capital(int num);
-void write_ptr(void *ptr);
+void write_ptr(void *ptr, int *buffer_id);
+int get_buffer(char data, int *buffer_id);
 
 #endif

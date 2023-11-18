@@ -6,7 +6,7 @@
  * write_ptr - handles pointers
  * @ptr: pointer to the memory address
  */
-void write_ptr(void *ptr)
+void write_ptr(void *ptr, int *buffer_id)
 {
     long int ptr_int;
     long int size;
@@ -29,13 +29,13 @@ void write_ptr(void *ptr)
 		if (each_char < 10)
 			val_conv = '0' + each_char;
 		if (i == 1)
-			write_char('0');
+			write_char('0', buffer_id);
 		if (i == 2)
-			write_char('x');
+			write_char('x', buffer_id);
 		if ((i < 4) && (val_conv != '0'))
-			write_char(val_conv);
+			write_char(val_conv, buffer_id);
 		if (i > 4)
-			write_char(val_conv);
+			write_char(val_conv, buffer_id);
 		ind--;
 	}
 }

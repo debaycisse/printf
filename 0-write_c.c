@@ -6,7 +6,7 @@
  * @ch: the character to be printed
  * Return: the value of the write function
  */
-int write_char(char ch)
+int write_char(char ch, int *buffer_id)
 {
-	return (write(1, &ch, 1));
+	return (get_buffer(ch, buffer_id));
 }

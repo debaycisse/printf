@@ -8,54 +8,54 @@
  * @count: to store the number of processed characters
  * @v_parameters: variadic value list
  */
-void percent_symbol(char ch, int *count, va_list v_parameters)
+void percent_symbol(char ch, int *count, va_list v_parameters, int *buffer_id)
 {
 	switch (ch)
 	{
 		case 'c':
-			write_char(va_arg(v_parameters, int));
+			write_char(va_arg(v_parameters, int), buffer_id);
 			(*count)++;
 			break;
 		case 's':
-			write_string(va_arg(v_parameters, char *));
+			write_string(va_arg(v_parameters, char *), buffer_id);
 			(*count)++;
 			break;
 		case '%':
-			write_p('%');
+			write_p('%', buffer_id);
 			(*count)++;
 			break;
 		case 'i':
 		case 'd':
-			write_int(va_arg(v_parameters, int));
+			write_int(va_arg(v_parameters, int), buffer_id);
 			(*count)++;
 			break;
 		case 'b':
-			write_b(va_arg(v_parameters, unsigned int));
+			write_b(va_arg(v_parameters, unsigned int), buffer_id);
 			(*count)++;
 			break;
 		case 'u':
-			write_u(va_arg(v_parameters, unsigned int));
+			write_u(va_arg(v_parameters, unsigned int), buffer_id);
 			(*count)++;
 			break;
 		case 'o':
-			write_o(va_arg(v_parameters, unsigned int));
+			write_o(va_arg(v_parameters, unsigned int), buffer_id);
 			(*count)++;
 			break;
 		case 'x':
-			write_x(va_arg(v_parameters, unsigned int));
+			write_x(va_arg(v_parameters, unsigned int), buffer_id);
 			(*count)++;
 			break;
 		case 'X':
-			write_X(va_arg(v_parameters, unsigned int));
+			write_X(va_arg(v_parameters, unsigned int), buffer_id);
 			(*count)++;
 			break;
 		case 'p':
-			write_ptr(va_arg(v_parameters, void *));
+			write_ptr(va_arg(v_parameters, void *), buffer_id);
 			(*count)++;
 			break;
 		default:
-			write_p('%');
-			write_char(ch);
+			write_p('%', buffer_id);
+			write_char(ch, buffer_id);
 			(*count) += 2;
 			break;
 	}

@@ -5,7 +5,7 @@
  * write_b - converts based 10 to binary
  * @num: the number to be converted
  */
-void write_b(unsigned int num)
+void write_b(unsigned int num, int *buffer_id)
 {
 	long int round;
 	unsigned int num_cpy;
@@ -32,7 +32,7 @@ void write_b(unsigned int num)
 	j = 0;
 	while (i > 0)
 	{
-		write_char((num_array[i]) + '0');
+		write_char((num_array[i]) + '0', buffer_id);
 		j++;
 		i--;
 	}

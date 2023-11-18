@@ -6,7 +6,7 @@
  * write_int - prints integer to the console
  * @num: the integer that is send to the standard output
  */
-void write_int(int num)
+void write_int(int num, int *buffer_id)
 {
 	int num_len = 1;
 	int i;
@@ -48,15 +48,15 @@ void write_int(int num)
 		{
 			for (i = 0; i < num_len_cpy; i++)
 			{
-				write_char(num_array[i] + '0');
+				write_char(num_array[i] + '0', buffer_id);
 			}
 		}
 		if (num < 0)
 		{
-			write_char('-');
+			write_char('-', buffer_id);
 			for (i = 0; i < num_len_cpy; i++)
 			{
-				write_char((-(num_array[i])) + '0');
+				write_char((-(num_array[i])) + '0', buffer_id);
 			}
 		}
 		free(num_array);

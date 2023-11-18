@@ -35,10 +35,10 @@ typedef struct func
 	void (*f_percentage)(char, counter *);
 	void (*f_int)(int, counter *);
 	void (*f_ptr)(void *, counter *);
-	void (*f_octa)(int, counter *);
+	void (*f_octa)(unsigned int, counter *);
 	void (*f_unsigned_int)(unsigned int, counter *);
-	void (*f_hex)(void *, counter *);
-	void (*f_HEX)(void *, counter *);
+	void (*f_hex)(unsigned int, counter *);
+	void (*f_HEX)(unsigned int, counter *);
 	void (*f_binary)(unsigned int, counter *);
 } func_t;
 
@@ -55,5 +55,11 @@ void percent_symbol(char ch, counter *count_name, va_list v_parameters);
 void backslash_symbol(char ch, counter *count_name);
 void write_int(int num, counter *count_name);
 void write_b(unsigned int num, counter *count_name);
+void write_u(unsigned int num, counter *count_name);
+void write_o(unsigned int num, counter *count_name);
+void write_x(unsigned int num, counter *count_name);
+void write_X(unsigned int num, counter *count_name);
+char switch_num_small(int num);
+char switch_num_capital(int num);
 
 #endif

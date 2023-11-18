@@ -6,45 +6,36 @@
  * @ch: character to use for determining the character handling
  * @count: to store the number of processed characters
  */
-void backslash_symbol(char ch, int *count)
+void backslash_symbol(char ch, counter *count)
 {
 	switch (ch)
 	{
 		case 't':
-			_putchar('\t');
-			(*count)++;
+			write_char('\t', count);
 			break;
 		case 'n':
-			_putchar('\n');
-			(*count)++;
+			write_char('\n', count);
 			break;
 		case '\\':
-			_putchar('\\');
-			(*count)++;
+			write_char('\\', count);
 			break;
 		case 'r':
-			_putchar('\r');
-			(*count)++;
+			write_char('\r', count);
 			break;
 		case 'v':
-			_putchar('\v');
-			(*count)++;
+			write_char('\v', count);
 			break;
 		case 'f':
-			_putchar('\f');
-			(*count)++;
+			write_char('\f', count);
 			break;
 		case 'b':
-			_putchar('\b');
-			(*count)++;
+			write_char('\b', count);
 			break;
 		case 'a':
-			_putchar('\a');
-			(*count)++;
+			write_char('\a', count);
 			break;
 		case '%':
-			_putchar('%');
-			(*count)++;
+			write_char('%', count);
 			break;
 		default:
 			break;

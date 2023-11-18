@@ -5,10 +5,10 @@
 /**
  * percent_symbol - handles percentage sign character formatting
  * @ch: character to use for determining the character handling
- * @count: to store the number of processed characters
+ * @count_name: to store the number of processed characters
  * @v_parameters: variadic value list
  */
-void percent_symbol(char ch, int *count, va_list v_parameters)
+void percent_symbol(char ch, counter *count_name, va_list v_parameters)
 {
 	func_t all_func[] = {
 		{'c', write_char, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
@@ -23,21 +23,25 @@ void percent_symbol(char ch, int *count, va_list v_parameters)
 	{
 		if (ch == all_func[i].format && i == 0)
 		{
-			(*all_func[i].f_char)(va_arg(v_parameters, int), count);
+			(*all_func[i].f_char)(va_arg(v_parameters, int), count_name);
 			break;
 		}
 
-		if (ch == all_func[i].format && i == 1)
+		else if (ch == all_func[i].format && i == 1)
 		{
-			(*all_func[i].f_str)(va_arg(v_parameters, char *), count);
+			(*all_func[i].f_str)(va_arg(v_parameters, char *), count_name);
 			break;
 		}
-		if (ch == all_func[i].format && i == 2)
+		else if (ch == all_func[i].format && i == 2)
 		{
-			(*all_func[i].f_percentage)('%', count);
+			(*all_func[i].f_percentage)('%', count_name);
 			break;
+		}
+		else if ((i + 1) == function_size)
+		{
+			write_char('%', count_name);
+			write_char(ch, count_name);
 		}
 		i++;
 	}
-	va_end(v_parameters);
 }

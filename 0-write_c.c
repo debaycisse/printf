@@ -1,14 +1,16 @@
+#include <stdio.h>
 #include "main.h"
 #include <unistd.h>
 
 /**
  * write_char - prints character to the console or screen
  * @ch: the character to be printed
- * @count: the total number of processed characters
+ * @count_name: the total number of processed characters
  * Return: the value of the @count
  */
-int write_char(char ch, int *count)
+int write_char(char ch, counter *count_name)
 {
-	*count += (int) write(1, &ch, 1);
-	return (*count);
+	write(1, &ch, 1);
+	incr_count(count_name);
+	return (count_name->count);
 }

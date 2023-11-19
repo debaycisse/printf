@@ -1,4 +1,3 @@
-
 /**
  * switch_num_capital - maps num to its ascii value
  * @num: the number to be converted

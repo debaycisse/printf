@@ -11,16 +11,8 @@
 void percent_symbol(char ch, counter *count_name, va_list v_parameters)
 {
 	func_t all_func[] = {
-		{'c', write_char, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'s', NULL, write_string, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'%', NULL, NULL, write_p, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'d', NULL, NULL, NULL, write_int, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'i', NULL, NULL, NULL, write_int, NULL, NULL, NULL, NULL, NULL, NULL},
-		{'b', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, write_b},
-		{'u', NULL, NULL, NULL, NULL, NULL, NULL, write_u, NULL, NULL, NULL},
-		{'o', NULL, NULL, NULL, NULL, NULL, write_o, NULL, NULL, NULL, NULL},
-		{'x', NULL, NULL, NULL, NULL, NULL, NULL, NULL, write_x, NULL, NULL},
-		{'X', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, write_X, NULL}
+		{'c', write_char, NULL},
+		{'S', NULL, write_S}
 	};
 	int function_size = sizeof(all_func) / sizeof(all_func[0]);
 	int i;
@@ -33,45 +25,9 @@ void percent_symbol(char ch, counter *count_name, va_list v_parameters)
 			(*all_func[i].f_char)(va_arg(v_parameters, int), count_name);
 			break;
 		}
-
 		else if (ch == all_func[i].format && i == 1)
 		{
-			(*all_func[i].f_str)(va_arg(v_parameters, char *), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 2)
-		{
-			(*all_func[i].f_percentage)('%', count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && (i == 3 || i == 4))
-		{
-			(*all_func[i].f_int)(va_arg(v_parameters, int), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 5)
-		{
-			(*all_func[i].f_binary)(va_arg(v_parameters, unsigned int), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 6)
-		{
-			(*all_func[i].f_unsigned_int)(va_arg(v_parameters, unsigned int), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 7)
-		{
-			(*all_func[i].f_octa)(va_arg(v_parameters, unsigned int), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 8)
-		{
-			(*all_func[i].f_hex)(va_arg(v_parameters, unsigned int), count_name);
-			break;
-		}
-		else if (ch == all_func[i].format && i == 9)
-		{
-			(*all_func[i].f_HEX)(va_arg(v_parameters, unsigned int), count_name);
+			(*all_func[i].f_non_prt)(va_arg(v_parameters, char *), count_name);
 			break;
 		}
 		else if ((i + 1) == function_size)
